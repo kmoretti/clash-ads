@@ -29,7 +29,7 @@ jobs:
 
       - name: Validate with mihomo
         run: |
-          VERSION=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | grep -oP '"tag_name": "\\K[^"]+')
+          VERSION=$(curl -sI https://github.com/MetaCubeX/mihomo/releases/latest | grep -i '^location:' | grep -oP 'tag/\Kv[0-9.]+' | tr -d '\r')
           echo "mihomo version: ${VERSION}"
           curl -sSL -o mihomo.gz \
             "https://github.com/MetaCubeX/mihomo/releases/download/${VERSION}/mihomo-linux-amd64-v3-${VERSION}.gz"
