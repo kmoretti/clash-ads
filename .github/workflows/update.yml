@@ -1,0 +1,48 @@
+name: update-rules
+
+on:
+  schedule:
+    # UTC 19:00 = 北京时间次日 03:00
+    - cron: "0 19 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: pip install pyyaml
+
+      - name: Build config
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/build.py
+
+      - name: Validate with mihomo
+        run: |
+          curl -sSL -o mihomo.gz \
+            https://github.com/MetaCubeX/mihomo/releases/latest/download/mihomo-linux-amd64-v3.gz
+          gunzip mihomo.gz
+          chmod +x mihomo
+          ./mihomo -t -d . -f dist/config.yaml
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist
+          if git diff --cached --quiet; then
+            echo "No changes, skip commit"
+            exit 0
+          fi
+          git commit -m "chore: update ad-block rules ($(date -u +%F))" -m "Made-with: Proma"
+          git push
