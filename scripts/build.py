@@ -70,7 +70,7 @@ def fetch_upstream() -> bytes:
 
 
 def main() -> None:
-    repo = os.environ.get("GITHUB_REPOSITORY", "kmoretti-github/clash-ads")
+    repo = os.environ.get("GITHUB_REPOSITORY", "kmoretti/clash-ads")
     rules_url = (
         f"https://raw.githubusercontent.com/{repo}/main/"
         "dist/rules/AWAvenue-Ads-Classical.yaml"

@@ -12,13 +12,13 @@
 直链：
 
 ```text
-https://raw.githubusercontent.com/kmoretti-github/clash-ads/main/dist/config.yaml
+https://raw.githubusercontent.com/kmoretti/clash-ads/main/dist/config.yaml
 ```
 
 大陆环境若直链拉取失败，在链接前加加速前缀：
 
 ```text
-https://ghfast.top/https://raw.githubusercontent.com/kmoretti-github/clash-ads/main/dist/config.yaml
+https://ghfast.top/https://raw.githubusercontent.com/kmoretti/clash-ads/main/dist/config.yaml
 ```
 
 ## 导入方法
