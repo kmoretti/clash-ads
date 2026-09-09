@@ -1,0 +1,36 @@
+# 由 scripts/build.py 自动生成，请勿直接编辑
+# 上游规则: AWAvenue 秋风广告规则 https://github.com/TG-Twilight/AWAvenue-Ads-Rule
+# 适配: Clash Meta for Android / FlClash（mihomo 内核），无节点，全直连，仅拦截广告
+
+mode: rule
+ipv6: true
+log-level: info
+
+profile:
+  store-fake-ip: true
+
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "+.lan"
+    - "+.local"
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+
+rule-providers:
+  AWAvenue-Ads:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://raw.githubusercontent.com/kmoretti-github/clash-ads/main/dist/rules/AWAvenue-Ads-Classical.yaml"
+    path: ./ruleset/AWAvenue-Ads.yaml
+    interval: 86400
+
+rules:
+  - RULE-SET,AWAvenue-Ads,REJECT
+  - MATCH,DIRECT
