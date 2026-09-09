@@ -27,7 +27,7 @@ rule-providers:
     type: http
     behavior: classical
     format: yaml
-    url: "https://raw.githubusercontent.com/kmoretti-github/clash-ads/main/dist/rules/AWAvenue-Ads-Classical.yaml"
+    url: "https://raw.githubusercontent.com/kmoretti/clash-ads/main/dist/rules/AWAvenue-Ads-Classical.yaml"
     path: ./ruleset/AWAvenue-Ads.yaml
     interval: 86400
 

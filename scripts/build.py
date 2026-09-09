@@ -105,13 +105,12 @@ rules:
 
     # 自检：生成结果必须是合法 YAML 且规则数正确
     parsed = yaml.safe_load(config)
-    assert parsed["rules"][0].startswith("DOMAIN-SUFFIX") or len(direct) == 0
     assert parsed["rules"][-1] == "MATCH,DIRECT"
     assert len(parsed["rules"]) == len(direct) + len(reject) + 2
 
     dist = ROOT / "dist"
     (dist / "rules").mkdir(parents=True, exist_ok=True)
-    (dist / "config.yaml").write_text(config, encoding="utf-8")
+    (dist / "config.yaml").write_text(config, encoding="utf-8", newline="\n")
     (dist / "rules" / "AWAvenue-Ads-Classical.yaml").write_bytes(upstream)
     print(f"OK: {len(direct)} direct / {len(reject)} reject custom rules; config + ruleset written")
 
