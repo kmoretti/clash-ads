@@ -4,7 +4,7 @@
 [秋风广告规则](https://github.com/TG-Twilight/AWAvenue-Ads-Rule)，
 每天北京时间凌晨 3 点由 GitHub Actions 自动更新。
 
-无任何节点 / 代理组，全部流量直连，仅广告域名 REJECT。
+无任何机场节点，全部流量直连，仅广告域名 REJECT。配置内含一个不承载流量的占位节点（客户端要求 profile 非空才能导入）。
 适配 Clash Meta for Android 与 FlClash。
 
 ## 订阅地址

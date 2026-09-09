@@ -1,6 +1,12 @@
 # 由 scripts/build.py 自动生成，请勿直接编辑
 # 上游规则: AWAvenue 秋风广告规则 https://github.com/TG-Twilight/AWAvenue-Ads-Rule
-# 适配: Clash Meta for Android / FlClash（mihomo 内核），无节点，全直连，仅拦截广告
+# 适配: Clash Meta for Android / FlClash（mihomo 内核），无机场，全直连，仅拦截广告
+
+# 占位节点：CMFA/FlClash 要求 profile 至少含一个 proxies 条目才能导入；
+# 所有规则均为 DIRECT/REJECT，此节点不承载任何流量
+proxies:
+  - name: "KEEP-ALIVE-DIRECT"
+    type: direct
 
 mode: rule
 ipv6: true
